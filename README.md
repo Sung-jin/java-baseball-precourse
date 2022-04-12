@@ -5,3 +5,7 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+### 요구사항
+
+* 숫자 야구 게임의 요구사항은 [링크](./docs/README.md) 에 명시한다.
