@@ -12,13 +12,12 @@ public class CheckerUtil {
     }
 
     public static Boolean hasDuplicateCharacterInString(String value) {
-        String[] splitValue = value.split("");
         Set<Character> removedDuplicatedBySplitValue = new HashSet<>();
 
         for (Character charValue: value.toCharArray()) {
             removedDuplicatedBySplitValue.add(charValue);
         }
 
-        return splitValue.length != removedDuplicatedBySplitValue.size();
+        return value.split("").length != removedDuplicatedBySplitValue.size();
     }
 }
