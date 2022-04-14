@@ -25,7 +25,7 @@ class LoopHelperTest {
     void function_helper_list_map_기능_테스트() {
         int index = 0;
         List<Integer> original = Arrays.asList(1, 2, 3, 4, 5);
-        // when
+        // given
 
         List<Integer> doubleMapResult = LoopHelper.listMap(original, (value) -> value * 2);
         // when
@@ -33,6 +33,18 @@ class LoopHelperTest {
         for (Integer value: original) {
             assertThat(value * 2).isEqualTo(doubleMapResult.get(index++));
         }
+        // then
+    }
+
+    @Test
+    void function_helper_list_filter_기능_테스트() {
+        List<Integer> original = Arrays.asList(1, 2, 3, 4, 5);
+        // given
+
+        List<Integer> filterResult = LoopHelper.listFilter(original, (value) -> value % 2 == 0);
+        // when
+
+        assertThat(filterResult).containsAll(Arrays.asList(2, 4));
         // then
     }
 
@@ -50,7 +62,7 @@ class LoopHelperTest {
     void function_helper_array_map_to_list_기능_테스트() {
         int index = 0;
         Integer[] original = {1, 2, 3, 4, 5};
-        // when
+        // given
 
         List<Integer> doubleMapResult = LoopHelper.arrayMapToList(original, (value) -> value * 2);
         // when

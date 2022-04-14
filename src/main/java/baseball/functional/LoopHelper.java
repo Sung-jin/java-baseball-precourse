@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class LoopHelper {
     public static <T> void listForEach(List<T> source, Consumer<? super T> action) {
@@ -21,6 +22,19 @@ public class LoopHelper {
         List<R> result = new ArrayList<>();
         listForEach(source, (value) -> {
             result.add(mapper.apply(value));
+        });
+
+        return result;
+    }
+
+    public static <T> List<T> listFilter(List<T> source, Predicate<? super T> predicate) {
+        Objects.requireNonNull(predicate);
+
+        List<T> result = new ArrayList<>();
+        listForEach(source, (value) -> {
+            if (predicate.test(value)) {
+                result.add(value);
+            }
         });
 
         return result;
