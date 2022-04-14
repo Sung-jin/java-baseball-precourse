@@ -52,14 +52,4 @@ public class Play {
             throw new IllegalArgumentException("Only non-duplicate numbers are allowed");
         }
     }
-
-    private List<Integer> convertStringToSingleNumberList(String value) {
-        List<Integer> result = new ArrayList<>();
-
-        for (String charValue: value.split("")) {
-            result.add(Integer.parseInt(charValue));
-        }
-
-        return result;
-    }
 }
