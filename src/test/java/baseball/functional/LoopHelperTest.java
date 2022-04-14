@@ -19,4 +19,19 @@ class LoopHelperTest {
             assertThat(value).isEqualTo(original.get(index.getAndIncrement()));
         });
     }
+
+    @Test
+    void function_helper_list_map_기능_테스트() {
+        int index = 0;
+        List<Integer> original = Arrays.asList(1, 2, 3, 4, 5);
+        // when
+
+        List<Integer> doubleMapResult = LoopHelper.listMap(original, (value) -> value * 2);
+        // when
+
+        for (Integer value: original) {
+            assertThat(value * 2).isEqualTo(doubleMapResult.get(index++));
+        }
+        // then
+    }
 }
