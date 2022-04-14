@@ -1,5 +1,6 @@
 package baseball.play.domain;
 
+import baseball.functional.LoopHelper;
 import baseball.util.CheckerUtil;
 import baseball.util.GeneratorUtil;
 import camp.nextstep.edu.missionutils.Console;
@@ -37,7 +38,7 @@ public class Play {
 
         validateEnteredByPlayer(enteredByPlayer);
 
-        return convertStringToSingleNumberList(enteredByPlayer);
+        return LoopHelper.arrayMapToList(enteredByPlayer.split(""), Integer::parseInt);
     }
 
     private void validateEnteredByPlayer(String value) {

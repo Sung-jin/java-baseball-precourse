@@ -1,5 +1,7 @@
 package baseball.util;
 
+import baseball.functional.LoopHelper;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -14,11 +16,9 @@ public class CheckerUtil {
     }
 
     public static Boolean hasDuplicateCharacterInString(String value) {
-        Set<Character> removedDuplicatedBySplitValue = new HashSet<>();
+        Set<String> removedDuplicatedBySplitValue = new HashSet<>();
 
-        for (Character charValue: value.toCharArray()) {
-            removedDuplicatedBySplitValue.add(charValue);
-        }
+        LoopHelper.arrayForEach(value.split(""), removedDuplicatedBySplitValue::add);
 
         return value.split("").length != removedDuplicatedBySplitValue.size();
     }
