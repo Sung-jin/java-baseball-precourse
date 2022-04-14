@@ -1,6 +1,7 @@
 package baseball.functional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -23,5 +24,16 @@ public class LoopHelper {
         });
 
         return result;
+    }
+
+    public static <T> void arrayForEach(T[] source, Consumer<? super T> action) {
+        List<T> convertToList = Arrays.asList(source);
+        listForEach(convertToList, action);
+    }
+
+    public static <T, R> List<R> arrayMapToList(T[] source, Function<? super T, ? extends R> mapper) {
+        List<T> convertToList = Arrays.asList(source);
+
+        return listMap(convertToList, mapper);
     }
 }
