@@ -9,6 +9,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class LoopHelper {
+
+    private LoopHelper() {}
+
     public static <T> void listForEach(List<T> source, Consumer<? super T> action) {
         Objects.requireNonNull(action);
         for (T value: source) {

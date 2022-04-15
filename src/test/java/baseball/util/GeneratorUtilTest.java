@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 class GeneratorUtilTest {
 
     @Nested
-    class 랜덤_숫자_리스트_생성_테스트 {
+    class 랜덤_유니크_숫자_리스트_생성_테스트 {
 
         @Test
         void 요청된_크기와_범위_내의_랜덤한_숫자_생성_요청시_정상_적으로_생성되어야_한다() {

@@ -2,7 +2,8 @@ package baseball.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GeneratorUtil {
 
@@ -13,17 +14,17 @@ public class GeneratorUtil {
     ) {
         validateRangeLength(listSize, rangeEndInt - rangeStartInt + 1);
 
-        Set<Integer> result = new HashSet<>();
+        List<Integer> result = new ArrayList<>();
 
         while(result.size() < listSize) {
-            result.add(Randoms.pickNumberInRange(rangeStartInt, rangeEndInt));
+            ifNoHasThenAddInList(result, Randoms.pickNumberInRange(rangeStartInt, rangeEndInt));
             /*
             Randoms 에 range validation 존재
             요구사항에 pickNumberInRange 를 사용해야 하므로 pickUniqueNumbersInRange 사용 불가
              */
         }
 
-        return shuffleFromSet(result);
+        return result;
     }
 
     private static void validateRangeLength(int rangeLength, int availableElementCount) {
@@ -35,10 +36,9 @@ public class GeneratorUtil {
         }
     }
 
-    private static List<Integer> shuffleFromSet(Set<Integer> from) {
-        List<Integer> to = new ArrayList<>(from);
-        Collections.shuffle(to);
-
-        return to;
+    private static <T> void ifNoHasThenAddInList(List<T> source, T value) {
+        if (!source.contains(value)) {
+            source.add(value);
+        }
     }
 }
