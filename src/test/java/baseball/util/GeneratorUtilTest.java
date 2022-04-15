@@ -53,5 +53,16 @@ class GeneratorUtilTest {
                     GeneratorUtil.generateRandomIntegerListWithoutDuplicate(startNumber, endNumber, generateListSize)
             ).isInstanceOf(IllegalArgumentException.class);
         }
+
+        @Test
+        void 음수_크기로_생성_요청시_예외가_발생해야_한다() {
+            int startNumber = 3;
+            int endNumber = 3;
+            int generateListSize = -1;
+
+            assertThatThrownBy(() ->
+                    GeneratorUtil.generateRandomIntegerListWithoutDuplicate(startNumber, endNumber, generateListSize)
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
     }
 }
