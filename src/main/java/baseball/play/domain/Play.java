@@ -16,8 +16,6 @@ public class Play {
 
     private List<Integer> answer;
     private Boolean isEndedGame;
-    private int ballCount = 0;
-    private int strikeCount = 0;
 
     public void start() {
         init();
@@ -26,9 +24,7 @@ public class Play {
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> enteredAnswer = enterAnswerByPlayer();
 
-            checkAnswer(enteredAnswer);
-            checkResult();
-            countInit();
+            checkResult(enteredAnswer);
         }
     }
 
@@ -59,34 +55,17 @@ public class Play {
         }
     }
 
-    private void checkAnswer(List<Integer> enteredAnswer) {
-        List<Integer> correctValues = LoopHelper.listFilter(enteredAnswer, (value) -> answer.contains(value));
-
-        LoopHelper.listForEach(correctValues, (value) -> {
-            int answerIndex = answer.indexOf(value);
-            int enteredAnswerIndex = enteredAnswer.indexOf(value);
-
-            if (answerIndex == enteredAnswerIndex) {
-                strikeCount++;
-            }
-
-            if (answerIndex != enteredAnswerIndex) {
-                ballCount++;
-            }
-        });
-    }
-
-    private void checkResult() {
+    private void checkResult(List<Integer> enteredAnswer) {
         List<String> result = new ArrayList<>();
+        int ballCount = Ball.count(answer, enteredAnswer);
+        int strikeCount = Strike.count(answer, enteredAnswer);
 
         if (ballCount > 0) {
             result.add(String.format("%d볼", ballCount));
         }
-
         if (strikeCount > 0) {
             result.add(String.format("%d스트라이크", strikeCount));
         }
-
         if (ballCount == 0 && strikeCount == 0) {
             result.add("낫싱");
         }
@@ -113,10 +92,5 @@ public class Play {
         }
 
         throw new IllegalArgumentException("You must enter 1 or 2");
-    }
-
-    private void countInit() {
-        strikeCount = 0;
-        ballCount = 0;
     }
 }
